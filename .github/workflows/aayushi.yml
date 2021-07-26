@@ -36,3 +36,13 @@ jobs:
       - run: cargo test --all-features
       - run: cargo fmt --all -- --check
       - run: cargo clippy --all --tests -- --deny warnings
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: build
