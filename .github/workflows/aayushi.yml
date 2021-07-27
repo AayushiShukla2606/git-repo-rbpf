@@ -37,9 +37,7 @@ jobs:
       - run: cargo fmt --all -- --check
       - run: cargo clippy --all --tests -- --deny warnings
       - name: Deploy
-        uses: AayushiShukla2606/rbpf-1@develop
+        uses: chrnorm/deployment-action@releases/v1
         env:
-          REPO: self
-          BRANCH: gh-pages
-          FOLDER: public/site
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo: solana-labs/rbpf
+          branch: main
