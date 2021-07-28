@@ -46,5 +46,10 @@ jobs:
       - name: Cargo Publish
         uses: actions-rs/toolchain@v1
         with:
+          profile: minimal
+          toolchain: stable
+          components: rustfmt, clippy
+        env:
           CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
-      - run: cargo publish
+      - run: cargo login $CRATES_IO_TOKEN
+      - run: cargo publish      
